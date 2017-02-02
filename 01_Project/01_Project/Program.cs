@@ -18,7 +18,7 @@ namespace _01_Project
                       triangleWidth     = 0,
                       triangleLine      = 0;
           
-            Random random    = new Random(); // Used for the collection of the random number
+            Random random =    new Random(); // Used for the collection of the random number
 
             // Print the welcome message
             #region Welcome message
