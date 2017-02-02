@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+//Nicholas Baltodano 2.1.17
 namespace _01_Project
 {
     
@@ -12,7 +12,7 @@ namespace _01_Project
     {
         static void Main(string[] args)
         {
-            const int triangleHeightMin = 1,
+            const int triangleMin = 1,
                       triangleHeightMax = 15;
                   int triangleHeight    = 0,
                       triangleWidth     = 0,
@@ -24,39 +24,36 @@ namespace _01_Project
             #region Welcome message
             Console.WriteLine("Hello, this program will select a random number for a triangle's height,");
             Console.WriteLine("it will then tell you if the triangle's height is even or odd,");
-            Console.WriteLine("it will then show a visual representation of the triangle.");
+            Console.WriteLine("and then show a visual representation of the triangle.");
             Console.WriteLine();
             #endregion
 
             // Get the random number 
-            triangleHeight = random.Next(triangleHeightMin, triangleHeightMax + 1);
+            triangleHeight = random.Next(triangleMin, triangleHeightMax + 1);
 
             // Determine if the height is even or odd and tell user
             #region Even or Odd
+            Console.Write($"The triangle height of {triangleHeight} ");
             if (triangleHeight % 2 == 0)
-            {
-                Console.WriteLine("The triangle height of " + triangleHeight + " is even.");
-            }
-           else
-            {
-                Console.WriteLine("The triangle height of " + triangleHeight + " is odd.");
-            }
+                Console.WriteLine("is even.");            
+            else            
+                Console.WriteLine(" is odd.");
             Console.WriteLine();
             #endregion
 
             //Draw the triangle
             #region Draw visual representation
-            for (triangleLine = 1 ; triangleLine <= triangleHeight; triangleLine++)
+            for (triangleLine = triangleMin ; triangleLine <= triangleHeight; triangleLine++)
             {
                 Console.Write("\t");
-                for(triangleWidth = 1; triangleWidth <= triangleLine; triangleWidth++)
+                for(triangleWidth = triangleMin; triangleWidth <= triangleLine; triangleWidth++)
                 {
                     Console.Write("*");
                 }
                 Console.WriteLine();       
             }
             #endregion
-
+            Console.WriteLine();
         }
     }
 }
