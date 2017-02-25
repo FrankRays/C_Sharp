@@ -8,7 +8,41 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="textBlock" Margin="194,0" TextWrapping="Wrap" Text="Cost Per Mile and MPG Comparison" VerticalAlignment="Top" Width="892" Height="71" SelectionChanged="textBlock_SelectionChanged" HorizontalAlignment="Center" FontSize="48" TextAlignment="Center"/>
+        <TextBlock x:Name="Title" Margin="194,0" TextWrapping="Wrap" Text="Cost Per Mile and MPG Comparison" VerticalAlignment="Top" Width="892" Height="71" SelectionChanged="textBlock_SelectionChanged" HorizontalAlignment="Center" FontSize="48" TextAlignment="Center"/>
+        <TextBlock x:Name="Vehicle1" Margin="194,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="56" Width="230" FontSize="36" TextAlignment="Center" HorizontalAlignment="Left">
+            <Run Text="First "/>
+            <Run Text="Vehicle "/>
+        </TextBlock>
+        <TextBlock x:Name="Vehicle2" Margin="893,108,64,0" TextWrapping="Wrap" Text="Second Vehicle" VerticalAlignment="Top" Height="56" SelectionChanged="textBlock2_SelectionChanged" FontSize="36" TextAlignment="Center"/>
+        <TextBlock x:Name="vehicleCostPrompt" HorizontalAlignment="Left" Margin="10,210,0,0" TextWrapping="Wrap" Text="Cost of Vehicle:" VerticalAlignment="Top" Width="161" Height="50" SelectionChanged="textBlock_SelectionChanged" FontSize="22"/>
+        <TextBlock x:Name="vehicleCostPrompt_Copy" HorizontalAlignment="Left" Margin="714,210,0,0" TextWrapping="Wrap" Text="Cost of Vehicle:" VerticalAlignment="Top" Width="161" Height="50" SelectionChanged="textBlock_SelectionChanged" FontSize="22"/>
+        <TextBlock x:Name="fillUpCostPrompt" HorizontalAlignment="Left" Margin="10,276,0,0" TextWrapping="Wrap" Text="Cost of Fill Up:" VerticalAlignment="Top" Height="41" Width="161" FontSize="22" RenderTransformOrigin="0.851,0.22"/>
+        <TextBlock x:Name="fillUpCostPrompt_Copy" HorizontalAlignment="Left" Margin="714,276,0,0" TextWrapping="Wrap" Text="Cost of Fill Up:" VerticalAlignment="Top" Height="41" Width="151" FontSize="22"/>
+        <TextBlock x:Name="totalMilesPrompt" HorizontalAlignment="Left" Margin="10,341,0,0" TextWrapping="Wrap" Text="Total Miles Driven:" VerticalAlignment="Top" FontSize="22" Height="56" Width="161" TextAlignment="Center"/>
+        <TextBlock x:Name="totalMilesPrompt_Copy" HorizontalAlignment="Left" Margin="714,341,0,0" TextWrapping="Wrap" Text="Total Miles Driven:" VerticalAlignment="Top" FontSize="22" Height="56" Width="161" TextAlignment="Center"/>
+        <TextBlock x:Name="gallonsPurchasedPrompt" HorizontalAlignment="Left" Margin="10,437,0,0" TextWrapping="Wrap" Text="Total Gallons Purchased:" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.077,-0.534" Height="65" Width="161" TextAlignment="Center"/>
+        <TextBlock x:Name="gallonsPurchasedPrompt_Copy" HorizontalAlignment="Left" Margin="714,437,0,0" TextWrapping="Wrap" Text="Total Gallons Purchased:" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.077,-0.534" Height="65" Width="161" TextAlignment="Center"/>
+        <TextBlock x:Name="MPGPrompt" HorizontalAlignment="Left" Margin="27,521,0,0" TextWrapping="Wrap" Text="Vehicle MPG:" VerticalAlignment="Top" FontSize="22" TextAlignment="Center"/>
+        <TextBlock x:Name="MPGPrompt_Copy" HorizontalAlignment="Left" Margin="738,521,0,0" TextWrapping="Wrap" Text="Vehicle MPG:" VerticalAlignment="Top" FontSize="22" TextAlignment="Center"/>
+        <TextBlock x:Name="CPMPrompt" HorizontalAlignment="Left" Margin="21,573,0,0" TextWrapping="Wrap" Text="Cost Per Mile:" VerticalAlignment="Top" TextAlignment="Center" FontSize="22"/>
+        <TextBlock x:Name="CPMPrompt_copy" HorizontalAlignment="Left" Margin="732,573,0,0" TextWrapping="Wrap" Text="Cost Per Mile:" VerticalAlignment="Top" TextAlignment="Center" FontSize="22"/>
+        <RadioButton x:Name="carType" Content="Car" HorizontalAlignment="Left" Margin="180,170,0,0" VerticalAlignment="Top" Checked="carType_Checked" GroupName="vehicle1"/>
+        <RadioButton x:Name="truckType" Content="Truck" HorizontalAlignment="Left" Margin="317,170,0,0" VerticalAlignment="Top" Checked="truckType_Checked" GroupName="vehicle1"/>
+        <RadioButton x:Name="carType_Copy" Content="Car" HorizontalAlignment="Left" Margin="935,170,0,0" VerticalAlignment="Top" Checked="carType2_Checked" GroupName="vehicle2"/>
+        <RadioButton x:Name="truckType_Copy" Content="Truck" HorizontalAlignment="Left" Margin="1072,170,0,0" VerticalAlignment="Top" Checked="truckType2_Checked" GroupName="vehicle2"/>
+        <TextBox x:Name="vehicle1Cost" HorizontalAlignment="Left" Margin="180,210,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Height="26" Width="219"/>
+        <TextBox x:Name="vehicle1FillUpCost" HorizontalAlignment="Left" Margin="180,276,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Height="30" Width="219"/>
+        <TextBox x:Name="vehicle1MilesDriven" HorizontalAlignment="Left" Margin="180,356,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="219"/>
+        <TextBox x:Name="vehicle1GallonsPuchased" HorizontalAlignment="Left" Margin="180,447,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="219"/>
+        <TextBlock x:Name="vehicle1MPG" HorizontalAlignment="Left" Margin="180,521,0,0" TextWrapping="Wrap" Text="perGallon" VerticalAlignment="Top" Foreground="Black" Width="128" Height="36" FontSize="22"/>
+        <TextBlock x:Name="vehicle1CPM" HorizontalAlignment="Left" Margin="180,573,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="152" FontSize="22"/>
+        <TextBox x:Name="vehicle2Cost" HorizontalAlignment="Left" Margin="935,210,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Height="26" Width="219"/>
+        <TextBox x:Name="vehicle2FillUpCost" HorizontalAlignment="Left" Margin="935,276,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Height="30" Width="219"/>
+        <TextBox x:Name="vehicle2MilesDriven" HorizontalAlignment="Left" Margin="935,356,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="28" Width="219"/>
+        <TextBox x:Name="vehicle2GallonsPuchased" HorizontalAlignment="Left" Margin="935,447,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="219"/>
+        <TextBlock x:Name="vehicle2MPG" HorizontalAlignment="Left" Margin="935,521,0,0" TextWrapping="Wrap" Text="perGallon" VerticalAlignment="Top" Foreground="Black" Width="128" Height="36" FontSize="22"/>
+        <TextBlock x:Name="vehicle2CPM" HorizontalAlignment="Left" Margin="935,573,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="152" FontSize="22"/>
+        <Button x:Name="calculateIt" Content="Calculate and Compare" HorizontalAlignment="Left" Margin="532,638,0,0" VerticalAlignment="Top" Width="177"/>
 
     </Grid>
 </Page>

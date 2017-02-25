@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using System.Text.RegularExpressions.Regex;
+using System.Text.RegularExpressions;
 
 
 
@@ -28,9 +28,15 @@ namespace GasMileageCalculator
         {
             this.InitializeComponent();
         }
-    }
-    
 
+        private void carType_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
+
+    
+    
 
 
 }
