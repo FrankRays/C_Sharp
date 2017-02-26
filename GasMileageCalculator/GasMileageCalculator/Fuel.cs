@@ -8,20 +8,19 @@ namespace GasMileageCalculator
 {
     static class Constants
     {
-        public const float MIN_GALLONS_PURCHASED = 0.0f;
-        public const float MIN_COST_OF_FILL_UP = MIN_GALLONS_PURCHASED;
-        public const float MIN_MILES_DRIVEN = MIN_COST_OF_FILL_UP;
-        public const float AVG_CAR_GAS_CAPACITY = 16.0f;
-        public const float AVG_TRUCK_GAS_CAPACITY = 23.0f;
+        public const double MIN_GALLONS_PURCHASED = 0.0;
+        public const double MIN_COST_OF_FILL_UP = MIN_GALLONS_PURCHASED;
+        public const double MIN_MILES_DRIVEN = 1.0;
+        public const double AVG_CAR_GAS_CAPACITY = 16.0;
+        public const double MIN_CAR_COST = 0.0;
     }
-
-    enum carType { car, truck}
 
     class Fuel
     {
-        // Fields
-        private float costOfFillUp
-        {
+        #region Fields & Accessors
+        private double costOfFillUp;
+        public double CostOfFillup
+        { 
             get
             {
                 return costOfFillUp;
@@ -35,7 +34,8 @@ namespace GasMileageCalculator
             }
         }
 
-        private float totalGallonsPurchased
+        private double totalGallonsPurchased;
+        public double TotalGallonsPurchased
         {
             get
             {
@@ -49,8 +49,9 @@ namespace GasMileageCalculator
                     throw new ArgumentOutOfRangeException();
             }
         }
-            
-        private float totalMilesDriven
+
+        private double totalMilesDriven;
+        public  double TotalMilesDriven
         {
             get
             {
@@ -64,28 +65,37 @@ namespace GasMileageCalculator
                     throw new ArgumentOutOfRangeException();
             }
         }
+        #endregion
 
-      
-        // Public Methods
-        //********************************************************************
-
-        // Cost Per Mile 
-        public float caclulateCostPerMile(float costOfVehicle, carType vehicle)
+        #region Constructors
+        public Fuel (double fillUpCost = Constants.MIN_COST_OF_FILL_UP,  double gallonsPurchased = Constants.MIN_GALLONS_PURCHASED, double totalMiles = Constants.MIN_MILES_DRIVEN)
         {
-            float costPerMile;
-
-            if( vehicle == carType.car)
-                costPerMile = (costOfVehicle + ((totalGallonsPurchased / Constants.AVG_CAR_GAS_CAPACITY) * costOfFillUp)) / totalMilesDriven;
+            if (fillUpCost < Constants.MIN_COST_OF_FILL_UP || gallonsPurchased < Constants.MIN_GALLONS_PURCHASED || totalMiles < Constants.MIN_MILES_DRIVEN)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             else
-                costPerMile = (costOfVehicle + ((totalGallonsPurchased / Constants.AVG_TRUCK_GAS_CAPACITY) * costOfFillUp)) / totalMilesDriven;
-            return costPerMile;
+            {
+                this.costOfFillUp = fillUpCost;
+                this.totalGallonsPurchased = gallonsPurchased;
+                this.totalMilesDriven = totalMiles;
+            }
+        }
+        #endregion
+
+        #region Public Methods
+        public double caclulateCostPerMile(double costOfVehicle)
+        {
+            if (costOfVehicle < Constants.MIN_CAR_COST)
+                costOfVehicle = Constants.MIN_CAR_COST;
+                        
+            return (costOfVehicle + ((totalGallonsPurchased / Constants.AVG_CAR_GAS_CAPACITY) * costOfFillUp)) / totalMilesDriven;
         }
 
-        // Calculate Miles Per Gallon
-        public float calculateMPG()
+        public double calculateMPG()
         {
             return totalMilesDriven / totalGallonsPurchased;
         }
-      
-     }
+        #endregion
+    }
 }
