@@ -7,15 +7,22 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="Title" Margin="194,0" TextWrapping="Wrap" Text="Cost Per Mile and MPG Comparison" VerticalAlignment="Top" Width="892" Height="71"  HorizontalAlignment="Center" FontSize="48" TextAlignment="Center"/>
+    <Grid Background="Beige">
+        
+        <TextBlock x:Name="Title" Margin="194,0" TextWrapping="Wrap" Text="Cost Per Mile and MPG Comparison" VerticalAlignment="Top" Width="892" Height="71"  HorizontalAlignment="Center" FontSize="48" TextAlignment="Center" Foreground="Black" SelectionHighlightColor="{ThemeResource AppBarBackgroundThemeBrush}"/>
+        
         <TextBlock x:Name="Vehicle1" Margin="169,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="56" Width="230" FontSize="36" TextAlignment="Center" HorizontalAlignment="Left">
             <Run Text="First "/>
             <Run Text="Vehicle "/>
         </TextBlock>
-        <TextBlock x:Name="Vehicle2" Margin="873,108,84,0" TextWrapping="Wrap" Text="Second Vehicle" VerticalAlignment="Top" Height="56" FontSize="36" TextAlignment="Center"/>
+       
+        <TextBlock x:Name="Vehicle2"  Margin="873,108,84,0" TextWrapping="Wrap" Text="Second Vehicle" VerticalAlignment="Top" Height="56" FontSize="36" TextAlignment="Center"/>
         <TextBlock x:Name="vehicleCostPrompt" HorizontalAlignment="Left" Margin="10,210,0,0" TextWrapping="Wrap" Text="Cost of Vehicle:" VerticalAlignment="Top" Width="161" Height="50" FontSize="22"/>
+
+        
         <TextBlock x:Name="vehicleCostPrompt_Copy" HorizontalAlignment="Left" Margin="714,210,0,0" TextWrapping="Wrap" Text="Cost of Vehicle:" VerticalAlignment="Top" Width="161" Height="50" FontSize="22"/>
+
+        
         <TextBlock x:Name="fillUpCostPrompt" HorizontalAlignment="Left" Margin="10,276,0,0" TextWrapping="Wrap" Text="Cost of Fill Up:" VerticalAlignment="Top" Height="41" Width="161" FontSize="22" RenderTransformOrigin="0.851,0.22"/>
         <TextBlock x:Name="fillUpCostPrompt_Copy" HorizontalAlignment="Left" Margin="714,276,0,0" TextWrapping="Wrap" Text="Cost of Fill Up:" VerticalAlignment="Top" Height="41" Width="151" FontSize="22"/>
         <TextBlock x:Name="totalMilesPrompt" HorizontalAlignment="Left" Margin="10,341,0,0" TextWrapping="Wrap" Text="Total Miles Driven:" VerticalAlignment="Top" FontSize="22" Height="56" Width="161" TextAlignment="Center"/>
@@ -38,10 +45,10 @@
         <TextBox x:Name="vehicle2GallonsPuchased" HorizontalAlignment="Left" Margin="935,447,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="30" Width="219"/>
         <TextBlock x:Name="vehicle2MPG" HorizontalAlignment="Left" Margin="935,521,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Black" Width="128" Height="36" FontSize="22"/>
         <TextBlock x:Name="vehicle2CPM" HorizontalAlignment="Left" Margin="935,573,0,0" TextWrapping="Wrap" Text="$" VerticalAlignment="Top" Width="152" FontSize="22"/>
-        <Button x:Name="calculateIt" Content="Calculate and Compare" HorizontalAlignment="Left" Margin="552,636,0,52" VerticalAlignment="Center" Width="177" Click="calculateIt_Click"/>
+        <Button x:Name="calculateIt" Content="Calculate and Compare" HorizontalAlignment="Left" Margin="552,636,0,52" VerticalAlignment="Center" Width="177" Click="calculateIt_Click" Foreground="Black"/>
         <TextBlock x:Name="errorMessage" HorizontalAlignment="Left" Margin="120,60,0,0" TextWrapping="Wrap" Text="All Values Must Be Non-Negative" VerticalAlignment="Top" Foreground="Red" FontSize="36" Width="1014" TextAlignment="Center" Visibility="Collapsed"/>
         <TextBlock x:Name="resultBoxlLeft" HorizontalAlignment="Left" Margin="82,607,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="56" Width="355" FontSize="22"/>
         <TextBlock x:Name="resultBoxRight" HorizontalAlignment="Left" Margin="799,612,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="56" Width="355" FontSize="20"/>
-
+        
     </Grid>
 </Page>

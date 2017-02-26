@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// NFB (2/25/17)
+/// Fuel class. 
+/// This is here to define what about fuel is being used in a vehicle.
+/// It will throw exceptions if any negative values are given to it
+/// </summary>
 namespace GasMileageCalculator
 {
     static class Constants
