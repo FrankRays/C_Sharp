@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Diagnostics;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -22,6 +23,7 @@ namespace SandwichOrdering
     public sealed partial class MainPage : Page
     {
         private Order customerOrder;
+        private Sandwich customerSandwich;
 
         public struct Sandwich
         {
@@ -112,7 +114,7 @@ namespace SandwichOrdering
                 }
                 set
                 {
-                    if (value == condiments.mushroom || value == Constants.NONE)
+                    if (value == condiments.mushrooms || value == Constants.NONE)
                         wMushrooms = value;
                     else
                         throw new ArgumentException();
@@ -149,7 +151,7 @@ namespace SandwichOrdering
                         sandwichSummary += "\n with Relish";
                     if (WMayonnaise == condiments.mayonnaise)
                         sandwichSummary += "\n with Mayonnaise";
-                    if (WMushrooms == condiments.mushroom)
+                    if (WMushrooms == condiments.mushrooms)
                         sandwichSummary += "\n with Mushrooms";
                 }
                 else
@@ -166,33 +168,192 @@ namespace SandwichOrdering
         public MainPage()
         {
             this.InitializeComponent();
-            customerOrder = new Order();
+            try
+            {
+                customerOrder = new Order();  
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                error_warning.Text = Constants.errorWarning;
+                error_warning.Visibility = Visibility.Visible;
+            }
+
+        }
+
+        public void updatePrice()
+        {
+            double subtotal,
+                   tax,
+                   total;
+
+            subtotal = customerOrder.totalCart();          
+            subTotalSign.Text = subtotal.ToString("F");
+
+            tax = Constants.TAX * subtotal;
+            taxSign.Text = tax.ToString("F");
             
+            total = subtotal + tax;
+            totalSign.Text = total.ToString("F"); 
         }
 
         private void addSoda_Click(object sender, RoutedEventArgs e)
         {
-            customerOrder.addDrink();
-            sodaCount.Text = customerOrder.DrinkCount.ToString();
+            try
+            {
+                customerOrder.addDrink();
+                sodaCount.Text = customerOrder.DrinkCount.ToString();
+                updatePrice();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                error_warning.Text = Constants.errorWarning;
+                error_warning.Visibility = Visibility.Visible;
+            }
+
+
         }
 
         private void minusSoda_Click(object sender, RoutedEventArgs e)
         {
-            customerOrder.removeDrink();
-            sodaCount.Text = customerOrder.DrinkCount.ToString();
+            try
+            {           
+                customerOrder.removeDrink();
+                sodaCount.Text = customerOrder.DrinkCount.ToString();
+                updatePrice();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                error_warning.Text = Constants.errorWarning;
+                error_warning.Visibility = Visibility.Visible;
+            }
         }
       
         private void addFries_Click(object sender, RoutedEventArgs e)
         {
-            customerOrder.addFry();
-            fryCount.Text = customerOrder.FryCount.ToString();
+            try
+            {
+                customerOrder.addFry();
+                fryCount.Text = customerOrder.FryCount.ToString();
+                updatePrice();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                error_warning.Text = Constants.errorWarning;
+                error_warning.Visibility = Visibility.Visible;
+            }
         }
 
         private void minusFries_Click(object sender, RoutedEventArgs e)
         {
-            customerOrder.removeFry();
-            fryCount.Text = customerOrder.FryCount.ToString();
+            try
+            {
+                customerOrder.removeFry();
+                fryCount.Text = customerOrder.FryCount.ToString();
+                updatePrice();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                error_warning.Text = Constants.errorWarning;
+                error_warning.Visibility = Visibility.Visible;
+            }
         }
 
+        private void addSandwich_Click(object sender, RoutedEventArgs e)
+        {
+            // See what checkboxes are clicked and assign appropiate values
+            // Sandwich type
+            if (wantedBLT.IsChecked == true)
+                customerSandwich.Type = sandwichType.BLT;
+            if (wantedPotroast.IsChecked == true)
+                customerSandwich.Type = sandwichType.potroast;
+            if (wantedTurkey.IsChecked == true)
+                customerSandwich.Type = sandwichType.turkey;
+            if (wantedHam.IsChecked == true)
+                customerSandwich.Type = sandwichType.ham;
+
+            // Ketchup
+            if (withKetchup.IsChecked == true)
+                customerSandwich.WKetchup = condiments.ketchup;
+            else
+                customerSandwich.WKetchup = Constants.NONE;
+
+            // Mustard
+            if (withMustard.IsChecked == true)
+                customerSandwich.WMustard = condiments.mustard;
+            else
+                customerSandwich.WMustard = Constants.NONE;
+
+            // Onions
+            if (withOnions.IsChecked == true)
+                customerSandwich.WOnions = condiments.onions;
+            else
+                customerSandwich.WOnions = Constants.NONE;
+
+            // Relish
+            if (withRelish.IsChecked == true)
+                customerSandwich.WRelish = condiments.relish;
+            else
+                customerSandwich.WRelish = Constants.NONE;
+
+            // Mayonnaise
+            if (withMayonnaise.IsChecked == true)
+                customerSandwich.WMayonnaise = condiments.mayonnaise;
+            else
+                customerSandwich.WMayonnaise = Constants.NONE;
+
+            // Mushrooms
+            if (withMushrooms.IsChecked == true)
+                customerSandwich.WMushrooms = condiments.mushrooms;
+            else
+                customerSandwich.WMushrooms = Constants.NONE;
+
+            // Fries
+            if (withFries.IsChecked == true)
+            {
+                try
+                {
+                    customerOrder.addFry();
+                    fryCount.Text = customerOrder.FryCount.ToString();
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    error_warning.Text = Constants.errorWarning;
+                    error_warning.Visibility = Visibility.Visible;
+                }
+            }
+            
+            // Soda
+            if (withSoda.IsChecked == true)
+            {
+                try
+                {
+                    customerOrder.addDrink();
+                    sodaCount.Text = customerOrder.DrinkCount.ToString();
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    error_warning.Text = Constants.errorWarning;
+                    error_warning.Visibility = Visibility.Visible;
+                }
+              
+            }
+          
+            // Add Sandwich
+            customerOrder.addSandwich(customerSandwich);
+
+            // Reset values for a new sandwhich
+            withSoda.IsChecked       = false;
+            withFries.IsChecked      = false;
+            withKetchup.IsChecked    = false;
+            withMustard.IsChecked    = false;
+            withOnions.IsChecked     = false;
+            withRelish.IsChecked     = false;
+            withMayonnaise.IsChecked = false;
+            withMushrooms.IsChecked  = false;
+            wantedBLT.IsChecked      = true;
+            
+            updatePrice();
+            
+        }    
     }
 }

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static SandwichOrdering.MainPage;
+using System.Diagnostics;
 
 namespace SandwichOrdering
 {
     // Enumerations
     public enum sandwichType { BLT, potroast, turkey, ham};
-    public enum condiments   { ketchup = 1, mustard, onions, relish, mayonnaise, mushroom};
+    public enum condiments   { ketchup = 1, mustard, onions, relish, mayonnaise, mushrooms};
 
     static class Constants
     {
@@ -19,7 +20,9 @@ namespace SandwichOrdering
         public const int    NONE           = 0;
         public const double FRY_COST       = 1.25;
         public const double SODA_COST      = 1.00;
-        public const double SANDWICH_COST  = 5.00;        
+        public const double SANDWICH_COST  = 5.00;
+        public const double TAX            =  .10;
+        public const string errorWarning = "There has been a warning, please restart the program.";    
     }
     
     class Order
@@ -67,6 +70,41 @@ namespace SandwichOrdering
         }
 
 
+    
+        #region Public Methods
+        // Add a drink to the order
+        public void addDrink()
+        {
+            this.DrinkCount++;
+        }
+
+        // Remove a drink from the order
+        public void removeDrink()
+        {
+            if (this.DrinkCount > Constants.NONE)
+                this.DrinkCount--;
+        }
+
+        // Add a fry to the order
+        public void addFry()
+        {
+            this.FryCount++;
+        }
+
+        // Remove a fry from the order
+        public void removeFry()
+        {
+            if (this.FryCount > Constants.NONE)
+                this.FryCount--;
+        }
+
+        // Add Sandwhich to the order
+        public void addSandwich(Sandwich newSandwhich)
+        {
+                this.sandwichList.Add(newSandwhich);          
+        }
+
+        // Get the total price of what's in the cart
         public double totalCart()
         {
             Double total = 0.0;
@@ -75,36 +113,12 @@ namespace SandwichOrdering
             {
                 total += Constants.SANDWICH_COST;
             }
+
             total += (DrinkCount * Constants.SODA_COST);
             total += (FryCount * Constants.FRY_COST);
             return total;
         }
 
-        public void addDrink()
-        {
-            this.DrinkCount++;
-        }
-
-        public void removeDrink()
-        {
-            if (this.DrinkCount > 0)
-                this.DrinkCount--;
-        }
-
-        public void addFry()
-        {
-            this.FryCount++;
-        }
-
-        public void removeFry()
-        {
-            if (this.FryCount > 0)
-                this.FryCount--;
-        }
-
-        public void addSandwich(Sandwich newSandwhich)
-        {
-            this.sandwichList.Add(newSandwhich);
-        }
+        #endregion
     }
 }
