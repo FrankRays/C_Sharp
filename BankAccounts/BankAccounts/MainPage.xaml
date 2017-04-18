@@ -7,7 +7,72 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="#FFD3D1AE">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="407*"/>
+            <ColumnDefinition Width="453*"/>
+            <ColumnDefinition Width="1060*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Column="2" Fill="#FF959B5F" HorizontalAlignment="Left" Height="984" Margin="50,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="968"/>
+
+        <Rectangle Grid.Column="1" Fill="#FF575B37" HorizontalAlignment="Left" Height="270" Margin="1,808,0,0" Stroke="Black" VerticalAlignment="Top" Width="452"/>
+
+        <Rectangle Grid.Column="1" Fill="#FF959B5F" Height="295" Stroke="Black" VerticalAlignment="Bottom" Margin="0,0,0,785"/>
+
+        <Rectangle x:Name="ListBoxRct" Fill="#FF959B5F" HorizontalAlignment="Left" Height="1080" Margin="-1,-1,0,1" Stroke="Black" VerticalAlignment="Bottom" Width="385" RenderTransformOrigin="-3.905,-2.225"/>
+
+        <Button x:Name="CreateCheckingAccountBTN" Content="Create Checking Account" HorizontalAlignment="Left" Margin="272,419,0,0" VerticalAlignment="Top" Click="CreateCheckingAccountBTN_Click" Grid.Column="2" Height="32" Width="187" />
+        <ListBox x:Name="AccountListBox" HorizontalAlignment="Right" Margin="0,65,58,18" Width="328" SelectionChanged="AccountListBox_SelectionChanged"/>
+        <TextBlock x:Name="accountListHeader" HorizontalAlignment="Left" Margin="53,8,0,0" TextWrapping="Wrap" Text="Accounts" VerticalAlignment="Top" Height="44" Width="272" FontSize="36" TextAlignment="Center" RenderTransformOrigin="0.616,0.398"/>
+        <TextBlock x:Name="accountBalanceBanner" Margin="11,156,253,0" TextWrapping="Wrap" Text="Account Balance:" VerticalAlignment="Top" FontSize="24" Height="41" Grid.Column="1"/>
+        <TextBlock x:Name="accountNumberBanner" Margin="11,102,245,0" TextWrapping="Wrap" Text="Account Number:" VerticalAlignment="Top" Height="35" FontSize="24" Grid.Column="1"/>
+        <TextBlock x:Name="displayAcccountNumber" Grid.Column="1" Margin="205,100,24,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="3,11.825" Height="44" FontSize="24"/>
+        <TextBlock x:Name="displayAccountBalance" Grid.Column="1" HorizontalAlignment="Left" Margin="204,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="44" Width="227" RenderTransformOrigin="0.478,0.466" FontSize="24"/>
+        <TextBlock x:Name="accountTypeBanner" Margin="11,45,245,0" TextWrapping="Wrap" Text="Account Type:" VerticalAlignment="Top" Height="35" FontSize="24" Grid.Column="1"/>
+        <TextBlock x:Name="displayAccountType" Grid.Column="1" Margin="210,43,19,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="3,11.825" Height="44" FontSize="24"/>
+        <TextBox x:Name="withdrawalAmountInput" Grid.Column="1" HorizontalAlignment="Left" Margin="45,363,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="53" Width="341" PlaceholderText="$0.00" FontSize="24"/>
+        <TextBox x:Name="depositAmountInput" Grid.Column="1" HorizontalAlignment="Left" Margin="45,576,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="53" Width="341" PlaceholderText="$0.00" FontSize="24"/>
+        <Button x:Name="withdrawButton" Content="Withdraw" Grid.Column="1" HorizontalAlignment="Left" Margin="144,431,0,0" VerticalAlignment="Top" Width="140" Height="32" Click="withdrawButton_Click"/>
+        <Button x:Name="depositButton" Content="Deposit" Grid.Column="1" HorizontalAlignment="Left" Margin="145,651,0,0" VerticalAlignment="Top" Width="140" Height="32" Click="depositButton_Click"/>
+        <Rectangle Fill="#FF959B5F" Height="49" Margin="0,483,0,0" Stroke="Black" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button x:Name="deleteAccount" Content="Delete Account" Grid.Column="1" HorizontalAlignment="Left" Margin="97,923,0,0" VerticalAlignment="Top" Width="257" Background="#FFD3D1AE" BorderBrush="Black" Foreground="Black" Click="deleteAccount_Click"/>
+        <Rectangle Fill="#FF959B5F" Height="49" Margin="0,759,0,0" Stroke="Black" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Width="453"/>
+        <TextBlock x:Name="deleteErrorBanner" Grid.Column="1" HorizontalAlignment="Left" Margin="39,836,0,0" TextWrapping="Wrap" Text="There is no account to be deleted" VerticalAlignment="Top" Width="384" Height="44" FontSize="24" TextAlignment="Center" Visibility="Collapsed"/>
+        <TextBlock x:Name="startingDepsositBanner" Grid.Column="2" HorizontalAlignment="Left" Margin="248,196,0,0" TextWrapping="Wrap" Text="Starting Deposit:  $" VerticalAlignment="Top" FontSize="24"/>
+        <TextBlock x:Name="startingInterestBanner" Grid.Column="2" HorizontalAlignment="Left" Margin="282,252,0,0" TextWrapping="Wrap" Text="Interest Rate:" VerticalAlignment="Top" FontSize="24"/>
+        <TextBox x:Name="startingDepositInput" Grid.Column="2" HorizontalAlignment="Left" Margin="457,194,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176" FontSize="24" PlaceholderText="0.00" InputScope="CurrencyAmount"/>
+        <TextBox x:Name="interestRateValue" Grid.Column="2" HorizontalAlignment="Left" Margin="455,254,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="24" Width="178" PlaceholderText="" InputScope="Number"/>
+        <TextBlock x:Name="textBlock" Grid.Column="2" HorizontalAlignment="Left" Margin="638,255,0,0" TextWrapping="Wrap" Text="%" VerticalAlignment="Top" Height="41" FontSize="24"/>
+        <Button x:Name="CreateSavingsAccount" Content="Create Saving Account" HorizontalAlignment="Left" Margin="500,419,0,0" VerticalAlignment="Top" Grid.Column="2" Height="32" Width="187" Click="CreateSavingsAccount_Click" />
+        <TextBlock x:Name="nameBanner" Grid.Column="2" HorizontalAlignment="Left" Margin="212,138,0,0" TextWrapping="Wrap" Text="First and Last Name:" VerticalAlignment="Top" Height="35" Width="239" FontSize="24"/>
+        <TextBox x:Name="firstNameInput" Grid.Column="2" HorizontalAlignment="Left" Margin="457,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="38" Width="237" PlaceholderText="First Name" FontSize="20" InputScope="Text"/>
+        <TextBox x:Name="lastNameInput" Grid.Column="2" HorizontalAlignment="Left" Margin="700,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="38" Width="234" PlaceholderText="Last Name" FontSize="20" InputScope="PersonalFullName"/>
+        <TextBlock x:Name="errorBanner" Grid.Column="2" HorizontalAlignment="Left" Margin="205,320,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="55" Width="643" FontSize="22"/>
+        <TextBlock x:Name="withdrawError" Grid.Column="1" HorizontalAlignment="Left" Margin="3,298,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="65" Width="450"/>
+        <TextBlock x:Name="depositError" Grid.Column="1" HorizontalAlignment="Left" Margin="5,698,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="60" Width="450" FontSize="22"/>
+        <Rectangle Grid.Column="2" Fill="#FFD3D1AE" HorizontalAlignment="Left" Height="100" Margin="50,478,0,0" Stroke="Black" VerticalAlignment="Top" Width="968"/>
+        <Button x:Name="calculateMonthlyInterest" Content="Calculate Monthly Interest" Grid.Column="2" HorizontalAlignment="Left" Margin="178,621,0,0" VerticalAlignment="Top" Background="#FFD3D1AE" Click="calculateMonthlyInterest_Click"/>
+        <Rectangle Fill="#FFD3D1AE" HorizontalAlignment="Left" Height="61.002" Margin="1160.012,776,-1212.004,0" Stroke="Black" VerticalAlignment="Top" Width="458.992" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Rectangle.RenderTransform>
+                <CompositeTransform Rotation="89.991"/>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <TextBlock x:Name="displayMonthlyInterest" Grid.Column="2" HorizontalAlignment="Left" Margin="126,705,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Height="33" Width="121" FontSize="24" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock1" Grid.Column="2" HorizontalAlignment="Left" Margin="262,705,0,0" TextWrapping="Wrap" Text="dollars a month" VerticalAlignment="Top" Height="32" Width="184" FontSize="24"/>
+        <TextBlock x:Name="calculateInterestError" Grid.Column="2" HorizontalAlignment="Left" Margin="115,776,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="176" Width="347" FontSize="24"/>
+        <TextBlock x:Name="textBlock2" Grid.Column="2" HorizontalAlignment="Left" Margin="619,639,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="333" Width="295"  FontSize="24">
+            <Run Text="Rules:"/>
+            <LineBreak/>
+            <Run/>
+            <LineBreak/>
+            <Run Text="Any characters in deposit and interest rate will be defaulted to 0."/>
+            <LineBreak/>
+            <Run/>
+            <LineBreak/>
+            <Run Text="Be sure to select an account before withdrawing or depositing."/>
+            <LineBreak/>
+            <Run/>
+        </TextBlock>
 
     </Grid>
 </Page>

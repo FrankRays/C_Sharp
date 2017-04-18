@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// Dictates what functions are needed
+/// </summary>
 namespace BankAccounts
 {
     interface IAccount
     {
 
-        void setAccountBalance();
+        void setAccountBalance(double newBalance);
 
-        string getFirstName();
+        string getLastFirstName();
 
         string getFullName();
         
