@@ -1,0 +1,20 @@
+﻿body {
+
+
+}
+
+.centerHeading {
+    margin: 0 auto;  
+    
+    width: 50%;
+    text-align:center;
+}
+
+.red {
+    color:blue;
+}
+
+
+.spacing {
+    height:15%;
+}
